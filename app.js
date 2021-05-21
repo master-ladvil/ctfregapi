@@ -30,8 +30,8 @@ app.get('/',(req,res) => {
 })
 
 
-PORT = process.env.port || 4500
+app.set('port', process.env.PORT || 4200)
 
-app.listen(PORT, () => {
-    console.log("Antena fixed")
-})
+
+
+app.listen(app.get('port'), () => console.log('listening on port ' + app.get('port')))
