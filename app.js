@@ -13,10 +13,11 @@ app.use(cors())
 const regrouter = require('./routes/register')
 const logrouter = require('./routes/login')
 const flagrouter = require('./routes/flag')
+const flagpostrouter = require('./routes/flagentry')
 app.use('/register',regrouter)
 app.use('/ctf',logrouter)
 app.use('/flag',flagrouter)
-
+app.use('/enterflag',flagpostrouter)
 const  url  =  process.env.url
 //const url = "mongodb://localhost:27017/ctfreg"
 const  connect  =  mongoose.connect(url, { useNewUrlParser: true , useUnifiedTopology: true })
