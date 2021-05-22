@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const flagentrymod = require("../models/flagentrymodel")
-const flagmod = require("../models/flagmodel")
+const flagmod = require("../models/flagmodel");
+const { patch } = require("./register");
 
 router.get('/', async (req, res) => {
     const findall = await flagentrymod.find();
@@ -9,16 +10,29 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/', async (req, res) => {
+
+
     const enterflag = new flagentrymod({
-        flag : req.body.flag,
         competitor : req.body.competitor
     })
 
+    //check the legit of the flag
     const findflag = await flagmod.findOne({flag : req.body.flag})
     if(!findflag){return res.json({message : "wrong flag!!"})}
 
-    const findflag2 = await flagentrymod.findOne({flag : req.body.flag})
-    if(findflag2){return res.json({message : "flag already entered by someone "})}
+    const findcount = await flagentrymod.findOne({competitor : req.body.competitor})
+    if (findcount){
+        
+            const patchcount = await flagentrymod.updateOne(
+            {competitor : req.body.competitor }, 
+            {$set : {flagcount :findcount.flagcount +1 } })
+
+            return res.json(patchcount)
+       
+
+        
+
+    }
     try{
     const uploadflag = await enterflag.save()
     res.json(uploadflag).status(200)

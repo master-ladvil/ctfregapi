@@ -1,14 +1,16 @@
 const mongoose = require("mongoose")
 
 const flagentermod = mongoose.Schema({
-    flag : {
-        type : String,
-        required : true
+    flagcount : {
+        type : Number,
+        default : 0
     },
     competitor : {
         type : String,
         required : true
     }
+
+    
 
 })
 

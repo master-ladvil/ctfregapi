@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const regmod = require('../models/regmodel')
+const flagentry = require("../models/flagentrymodel")
+const initflagentry = require("./initflagentry")
 router.get('/', async (req,res) => {
     try{
     const data = await regmod.find()
@@ -20,7 +22,7 @@ router.get('/phone/:phoneid', async (req,res) => {
     }
 })
 
-router.post('/',async (req, res) => {
+router.post('/',initflagentry,async (req, res) => {
      const user = new regmod({
         studentName: req.body.studentName,
         phoneNumber : req.body.phoneNumber,
