@@ -17,6 +17,16 @@ router.post('/', async (req, res) => {
     })
 
     //check the legit of the flag
+
+    const findcompetitor = await flagentrymod.findOne({competitor : req.body.competitor})
+    if(!findcompetitor){
+        try {
+            const postnewcompetitor = await enterflag.save()
+            return res.json(postnewcompetitor)
+        }catch(err){
+            return res.json({message : err})
+        }
+    }
     const findflag = await flagmod.findOne({flag : req.body.flag})
     if(!findflag){return res.json({message : "wrong flag!!"})}
 
