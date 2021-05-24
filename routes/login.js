@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const regmod = require('../models/regmodel')
+const flagmodel = require("../models/flagmodel")
 
 router.post('/',async (req, res) => {
     
@@ -11,7 +12,15 @@ router.post('/',async (req, res) => {
 
     try{
         if (finduser.password === req.body.password) {
-            return res.send("flag")
+            const responsefortwo = {
+                cypher : "lbhe frpbaq ebhaq ncv xrl vf uggcf://pgsert.urebxhncc.pbz/frpbaqebhaq ubyq baa!!! lbh tbg nabgure yvax uggcf://qevir.tbbtyr.pbz/svyr/q/1E3Rlo3AGInJtYnUur4ZdosAbVz3nSgiE/ivrj?hfc=funevat",
+                flag: await flagmodel.findOne()
+            }
+            
+            
+            
+            
+            return res.send(responsefortwo)
         }
         else{
             return res.send("no flag for ya!!")

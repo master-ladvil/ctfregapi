@@ -35,10 +35,7 @@ router.post('/', async (req, res) => {
         
 
     }
-    try{
-    const uploadflag = await enterflag.save()
-    res.json(uploadflag).status(200)
-    }catch(err){res.json(err)}
+   
   
 
 })
