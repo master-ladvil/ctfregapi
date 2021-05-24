@@ -33,7 +33,16 @@ router.post('/', async (req, res) => {
             {competitor : req.body.competitor }, 
             {$set : {flagcount :findcount.flagcount +1 } })
 
-            return res.json(patchcount)
+
+            const delflag = req.body.flag
+            const flagdel = await flagmod.deleteOne({flag : delflag})
+
+            const responsedd = {
+                statusOne : patchcount,
+                statustwo : flagdel
+            }     
+
+            return res.json(responsedd)
        
 
         

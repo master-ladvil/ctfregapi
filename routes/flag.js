@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     })
     try{
         const upflag = await newflag.save()
-        res.json(upflag).statusCode(200)
+        res.json(upflag)
     }catch(err){res.json({message: err})}
 })
 
