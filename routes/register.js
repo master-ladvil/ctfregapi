@@ -22,11 +22,13 @@ router.get('/phone/:phoneid', async (req,res) => {
     }
 })
 
-router.post('/',initflagentry,async (req, res) => {
-     const user = new regmod({
+router.post('/',async (req, res) => {
+
+
+    const user = new regmod({
         studentName: req.body.studentName,
         phoneNumber : req.body.phoneNumber,
-        email : req.body.email,
+        email : req.body.email, 
         password : req.body.password,
         collegeName : req.body.collegeName,
         collegeRegId : req.body.collegeRegId
