@@ -14,7 +14,7 @@ router.post('/',async (req, res) => {
         if (finduser.password === req.body.password) {
             const responsefortwo = {
                 cypher : "lbhe frpbaq ebhaq ncv xrl vf uggcf://pgsert.urebxhncc.pbz/frpbaqebhaq ubyq baa!!! lbh tbg nabgure yvax uggcf://qevir.tbbtyr.pbz/svyr/q/1FunPF2SQLKgyLIxKxhFUTl_kPCj3NDt-/ivrj?hfc=funevat",
-                flag: await flagmodel.findOne()
+                flag: "no more flags in this round"
             }
             
             
