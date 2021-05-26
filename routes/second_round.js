@@ -9,7 +9,7 @@ router.post('/', async (req, res) => {
     }
     if (req.body.admin === normieuser.admin && req.body.password === normieuser.password){
         const responsed = {
-            flag : await falgmod.findOne()
+            flag : "no more flags in this round go for next round"
         }
         return res.send(responsed)
     }
