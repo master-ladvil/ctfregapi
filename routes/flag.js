@@ -3,14 +3,9 @@ const router = express.Router();
 const flagmod = require('../models/flagmodel')
 
 
-router.get('/', async (req, res) => {
-
-    const getflags = await flagmod.find()
-    res.json(getflags)
-})
 
 
-router.post('/', async (req, res) => {
+router.post('/secret', async (req, res) => {
     newflag = new flagmod({
         flag : req.body.flag
     })
