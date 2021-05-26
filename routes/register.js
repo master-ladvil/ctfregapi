@@ -10,17 +10,7 @@ router.get('/', async (req,res) => {
     }catch(err){res.json({message: err})}
 })
 
-router.get('/phone/:phoneid', async (req,res) => {
 
-    try{
-        const findnum = await regmod.findOne({phoneNumber : req.params.phoneid })
-        res.json(findnum).status(200)
-    }catch(err){
-        res.json({
-            message: err
-        })
-    }
-})
 
 router.post('/',async (req, res) => {
 
